@@ -1,0 +1,165 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.myviroapp"
+4    android:versionCode="1004"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="30" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->D:\Projects\arproject\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->D:\Projects\arproject\android\app\src\debug\AndroidManifest.xml:5:22-75
+12
+13    <queries>
+13-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:4:5-6:15
+14        <package android:name="com.google.ar.core" />
+14-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:5:9-54
+14-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:5:18-51
+15    </queries>
+16
+17    <uses-permission android:name="android.permission.INTERNET" />
+17-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:7:5-67
+17-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:7:22-64
+18    <uses-permission android:name="android.permission.CAMERA" /> <!-- You may need these if doing any screen recording from within the app -->
+18-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:8:5-65
+18-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:8:22-62
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:10:5-79
+19-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:10:22-77
+20    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Other camera related features -->
+20-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:11:5-80
+20-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:11:22-78
+21    <uses-feature android:name="android.hardware.camera.ar" />
+21-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:13:5-63
+21-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:13:19-60
+22    <uses-feature android:name="android.hardware.camera" />
+22-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:14:5-60
+22-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:14:19-57
+23    <uses-feature
+23-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:15:5-119
+24        android:name="android.hardware.camera.autofocus"
+24-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:15:19-67
+25        android:required="false" /> <!-- Usage of accelerometer and gyroscope -->
+25-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:15:68-92
+26    <uses-feature
+26-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:19:5-124
+27        android:name="android.hardware.sensor.accelerometer"
+27-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:19:19-71
+28        android:required="false" />
+28-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:19:72-96
+29    <uses-feature
+29-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:20:5-120
+30        android:name="android.hardware.sensor.gyroscope"
+30-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:20:19-67
+31        android:required="false" />
+31-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:20:68-92
+32
+33    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Required for vibration feedback when the trigger action is performed. -->
+33-->[com.facebook.flipper:flipper:0.93.0] C:\Users\SoftSuave\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:5-76
+33-->[com.facebook.flipper:flipper:0.93.0] C:\Users\SoftSuave\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:22-73
+34    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+34-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:14:5-79
+34-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:14:22-76
+35    <uses-permission android:name="android.permission.VIBRATE" /> <!-- Required for Recording -->
+35-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:15:5-66
+35-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:15:22-63
+36    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Required to detect viewer insertion. -->
+36-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:19:5-71
+36-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:19:22-68
+37    <uses-permission android:name="android.permission.NFC" /> <!-- Indicates use of Android's VR-mode, available only on Android N+. -->
+37-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:22:5-62
+37-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:22:22-59
+38    <uses-feature
+38-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:35:5-37:36
+39        android:name="android.software.vr.mode"
+39-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:36:9-48
+40        android:required="false" /> <!-- Indicates use of VR features that are available only on Daydream-ready devices. -->
+40-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:37:9-33
+41    <uses-feature
+41-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:39:5-41:36
+42        android:name="android.hardware.vr.high_performance"
+42-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:40:9-60
+43        android:required="false" />
+43-->[:viro_renderer] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\viro_renderer\build\.transforms\04a669d887f85fbd756cde697726f5eb\transformed\jetified-viro_renderer-release\AndroidManifest.xml:41:9-33
+44
+45    <application
+45-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:23:5-43:19
+46        android:name="com.myviroapp.MainApplication"
+46-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:24:7-38
+47        android:allowBackup="false"
+47-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:28:7-34
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.1.0] C:\Users\SoftSuave\.gradle\caches\transforms-3\384a804ddf61add8f1298a3b8f500b71\transformed\core-1.1.0\AndroidManifest.xml:24:18-86
+49        android:debuggable="true"
+50        android:extractNativeLibs="false"
+51        android:icon="@mipmap/ic_launcher"
+51-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:26:7-41
+52        android:label="@string/app_name"
+52-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:25:7-39
+53        android:roundIcon="@mipmap/ic_launcher_round"
+53-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:27:7-52
+54        android:supportsRtl="true"
+54-->[:react_viro] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\react_viro\build\.transforms\d6c7e5f581ab51446bdc8cffded00080\transformed\jetified-react_viro-release\AndroidManifest.xml:13:9-35
+55        android:theme="@style/AppTheme"
+55-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:30:7-38
+56        android:usesCleartextTraffic="true" >
+56-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:29:7-42
+57        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+57-->D:\Projects\arproject\android\app\src\debug\AndroidManifest.xml:11:9-86
+57-->D:\Projects\arproject\android\app\src\debug\AndroidManifest.xml:11:19-83
+58
+59        <meta-data
+59-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:31:7-79
+60            android:name="com.google.ar.core"
+60-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:31:18-51
+61            android:value="required" />
+61-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:31:52-76
+62
+63        <activity
+63-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:32:7-42:18
+64            android:name="com.myviroapp.MainActivity"
+64-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:33:9-37
+65            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+65-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:35:9-86
+66            android:label="@string/app_name"
+66-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:34:9-41
+67            android:launchMode="singleTask"
+67-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:36:9-40
+68            android:windowSoftInputMode="adjustResize" >
+68-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:37:9-51
+69            <intent-filter>
+69-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:38:9-41:25
+70                <action android:name="android.intent.action.MAIN" />
+70-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:39:13-65
+70-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:39:21-62
+71
+72                <category android:name="android.intent.category.LAUNCHER" />
+72-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:40:13-73
+72-->D:\Projects\arproject\android\app\src\main\AndroidManifest.xml:40:23-70
+73            </intent-filter>
+74        </activity> <!-- The minimal version code of ARCore APK required for an app using this SDK. -->
+75        <meta-data
+75-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:36:9-38:41
+76            android:name="com.google.ar.core.min_apk_version"
+76-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:37:13-62
+77            android:value="211680000" /> <!-- This activity is critical for installing ARCore when it is not already present. -->
+77-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:38:13-38
+78        <activity
+78-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:40:9-46:80
+79            android:name="com.google.ar.core.InstallActivity"
+79-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:41:13-62
+80            android:configChanges="keyboardHidden|orientation|screenSize"
+80-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:42:13-74
+81            android:excludeFromRecents="true"
+81-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:43:13-46
+82            android:exported="false"
+82-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:44:13-37
+83            android:launchMode="singleTop"
+83-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:45:13-43
+84            android:theme="@android:style/Theme.Material.Light.Dialog.Alert" />
+84-->[:arcore_client] D:\Projects\arproject\node_modules\@viro-community\react-viro\android\arcore_client\build\.transforms\babfa47496b2f72ab67ef1044a13662c\transformed\jetified-core-1.26.0\AndroidManifest.xml:46:13-77
+85    </application>
+86
+87</manifest>
