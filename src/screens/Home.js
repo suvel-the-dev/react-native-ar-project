@@ -35,6 +35,7 @@ const Home = () => {
   };
 
   return (
+    
     <ViroARScene>
       <ViroAmbientLight color="#FFFFFF" />
       <Viro3DObject
