@@ -4,11 +4,15 @@ import {Text, TouchableOpacity} from 'react-native';
 const Button = ({
   children,
   onPress,
-  style = {flex: 1},
-  textStyle = {textAlign: 'center'},
+  style,
+  textStyle = {
+    textAlign: 'center',
+    fontSize: 20,
+    color: style ? 'white' : 'black',
+  },
 }) => {
   return (
-    <TouchableOpacity onPress={onPress && onPress} style={style}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <Text style={textStyle}>{children}</Text>
     </TouchableOpacity>
   );

@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ViroARSceneNavigator} from '@viro-community/react-viro';
-import ImageDetection from './ImageDetection.js';
-import Home from './Home.js';
-import Test from './Test.js';
-import PlaceMultipleObj from './PlaceMultipleObj.js';
-import {Button, View} from 'react-native';
+import {View} from 'react-native';
+import Button from '../common/Button.js';
+import {styles} from '../common/style.js';
 
 const objArray = [
   require('../assets/res/coffee_mug/object_coffee_mug.vrx'),
@@ -33,7 +31,6 @@ const InitialARScreen = ({route, navigation}) => {
     <View style={{flex: 1}}>
       <View style={{flex: 10}}>
         <ViroARSceneNavigator
-          onExitViro={() => navigation.navigate('Home')}
           autofocus={true}
           initialScene={{
             scene: route?.params?.screen,
@@ -47,33 +44,32 @@ const InitialARScreen = ({route, navigation}) => {
           style={{
             flex: 1,
             flexDirection: 'row',
-            backgroundColor: 'yellow',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           <Button
-            onPress={() => onShowObject(0, 'coffee_mug', 0)}
-            title="coffee_mug"
-            color="#841584"
-          />
+            style={styles.smallButton}
+            onPress={() => onShowObject(0, 'coffee_mug', 0)}>
+            coffee mug
+          </Button>
           <Button
-            onPress={() => onShowObject(1, 'flowers', 0.29076)}
-            title="flowers"
-            color="#841584"
-          />
+            style={styles.smallButton}
+            onPress={() => onShowObject(1, 'flowers', 0.29076)}>
+            flowers
+          </Button>
           <Button
-            onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}
-            title="smile_emoji"
-            color="#841584"
-          />
+            style={styles.smallButton}
+            onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}>
+            smile emoji
+          </Button>
         </View>
       )}
       <View style={{position: 'absolute'}}>
         <Button
-          onPress={() => navigation.navigate('SplashScreen')}
-          title="Back"
-          color="#841584"
-        />
+          style={styles.smallButton}
+          onPress={() => navigation.navigate('SplashScreen')}>
+          Back
+        </Button>
       </View>
     </View>
   );

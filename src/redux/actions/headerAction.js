@@ -1,8 +1,8 @@
-import {HEADER_NAME} from '../constants';
+import {LIST_OBJ} from '../constants';
 
-export function changeHeader(header) {
+export function addListObj(listObj) {
   return {
-    type: HEADER_NAME,
-    payload: header,
+    type: LIST_OBJ,
+    payload: listObj,
   };
 }

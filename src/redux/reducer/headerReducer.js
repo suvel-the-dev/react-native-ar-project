@@ -1,13 +1,13 @@
-import {HEADER_NAME} from '../constants';
+import {LIST_OBJ} from '../constants';
 
-const initialState = {name: []};
+const initialState = {listObj: []};
 
 const headerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case HEADER_NAME:
+    case LIST_OBJ:
       return {
         ...state,
-        name: action.payload,
+        listObj: action.payload,
       };
     default:
       return state;

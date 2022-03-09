@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
-import {View, Button} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
+import Button from '../common/Button.js';
+import {styles} from '../common/style.js';
 import Home from './Home.js';
 import ImageDetection from './ImageDetection.js';
 import PlaceMultipleObj from './PlaceMultipleObj.js';
@@ -14,26 +16,24 @@ const SplashScreen = ({navigation}) => {
       style={{
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'yellow',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
       <Button
-        onPress={() => changeScreen(Home, 'Home')}
-        title="Home Screen"
-        color="#841584"
-      />
+        style={styles.largeButton}
+        onPress={() => changeScreen(Home, 'Home')}>
+        Home Screen
+      </Button>
       <Button
-        onPress={() => changeScreen(PlaceMultipleObj, 'PlaceMultipleObj')}
-        title="PlaceMultipleObj"
-        color="#841584"
-      />
-      {/* <Button onPress={() => changeScreen()} title="flowers" color="#841584" /> */}
+        style={styles.largeButton}
+        onPress={() => changeScreen(PlaceMultipleObj, 'PlaceMultipleObj')}>
+        Place Multiple Obj
+      </Button>
       <Button
-        onPress={() => changeScreen(ImageDetection, 'ImageDetection')}
-        title="Image Detection Screen"
-        color="#841584"
-      />
+        style={styles.largeButton}
+        onPress={() => changeScreen(ImageDetection, 'ImageDetection')}>
+        Image Detection Screen
+      </Button>
     </View>
   );
 };

@@ -1,1 +1,1 @@
-export const HEADER_NAME = 'HEADER_NAME';
+export const LIST_OBJ = 'LIST_OBJ';

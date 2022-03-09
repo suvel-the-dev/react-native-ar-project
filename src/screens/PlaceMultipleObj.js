@@ -9,10 +9,10 @@ import {
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
-import {changeHeader} from '../redux/actions/headerAction';
+import {addListObj} from '../redux/actions/headerAction';
 
 const PlaceMultipleObj = props => {
-  const a = useSelector(state => state.headerReducer);
+  const getlistObj = useSelector(state => state.headerReducer);
   const dispach = useDispatch();
 
   const [state, setState] = useState({
@@ -74,7 +74,7 @@ const PlaceMultipleObj = props => {
   }, [props.arSceneNavigator.viroAppProps]);
 
   const getModel = async () => {
-    var modelArray = a.name;
+    let modelArray = getlistObj.listObj;
     // var modelArray = [];
 
     if (
@@ -134,6 +134,7 @@ const PlaceMultipleObj = props => {
           position={[0, props.arSceneNavigator.viroAppProps.yOffset, 0]}
           source={props.arSceneNavigator.viroAppProps.objectSource}
           type="VRX"
+          onClick={(position, source) => console.log(position, source)}
         />
 
         <ViroQuad
@@ -146,13 +147,13 @@ const PlaceMultipleObj = props => {
         />
       </ViroNode>,
     );
-    dispach(changeHeader(modelArray));
+    dispach(addListObj(modelArray));
   };
 
   return (
     <ViroARScene ref={arscene} onTrackingUpdated={() => console.log('done')}>
       <ViroAmbientLight color="#ffffff" intensity={200} />
-      {a?.name}
+      {getlistObj?.listObj}
     </ViroARScene>
   );
 };
