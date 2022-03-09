@@ -6,13 +6,13 @@ import {
   ViroQuad,
   ViroSpotLight,
 } from '@viro-community/react-viro';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useSelector} from 'react-redux';
-import {changeHeader} from '../redux/actions/headerAction';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { changeHeader } from '../redux/actions/headerAction';
 
-const New = props => {
-  const a = useSelector(state => state.headerReducer);
+const New = (props) => {
+  const a = useSelector((state) => state.headerReducer);
   const dispach = useDispatch();
   console.log(a);
   const [state, setState] = useState({
@@ -29,7 +29,7 @@ const New = props => {
   const onTrackInit = () => {
     props.arSceneNavigator.viroAppProps._onTrackingInit();
   };
-  const setInitialPlacement = position => {
+  const setInitialPlacement = (position) => {
     setState({
       objPosition: position,
     });
@@ -38,30 +38,30 @@ const New = props => {
   const onArHitTestResults = (position, forward, results) => {
     // Default position is just 1.5 meters in front of the user.
     let newPosition = [forward[0] * 1.5, forward[1] * 1.5, forward[2] * 1.5];
-    let hitResultPosition = undefined;
+    let hitResultPosition;
 
     // Filter the hit test results based on the position.
     if (results.length > 0) {
       for (var i = 0; i < results.length; i++) {
         let result = results[i];
-        if (result.type == 'ExistingPlaneUsingExtent') {
-          var distance = Math.sqrt(
+        if (result.type === 'ExistingPlaneUsingExtent') {
+          let distance = Math.sqrt(
             (result.transform.position[0] - position[0]) *
               (result.transform.position[0] - position[0]) +
               (result.transform.position[1] - position[1]) *
                 (result.transform.position[1] - position[1]) +
               (result.transform.position[2] - position[2]) *
-                (result.transform.position[2] - position[2]),
+                (result.transform.position[2] - position[2])
           );
           if (distance > 0.2 && distance < 10) {
             // If we found a plane greater than .2 and less than 10 meters away then choose it!
             hitResultPosition = result.transform.position;
             break;
           }
-        } else if (result.type == 'FeaturePoint' && !hitResultPosition) {
+        } else if (result.type === 'FeaturePoint' && !hitResultPosition) {
           // If we haven't found a plane and this feature point is within range, then we'll use it
           // as the initial display point.
-          var distance = this._distance(position, result.transform.position);
+          let distance = this._distance(position, result.transform.position);
           if (distance > 0.2 && distance < 10) {
             hitResultPosition = result.transform.position;
           }
@@ -78,24 +78,24 @@ const New = props => {
   };
 
   const onLoadEnd = () => {
-    arscene.current.getCameraOrientationAsync().then(orientation => {
+    arscene.current.getCameraOrientationAsync().then((orientation) => {
       arscene.current
         .performARHitTestWithRay(orientation.forward)
-        .then(results => {
+        .then((results) => {
           onArHitTestResults(
             orientation.position,
             orientation.forward,
-            results,
+            results
           );
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     });
     props.arSceneNavigator.viroAppProps._onLoadEnd();
   };
 
-  
   useEffect(() => {
     getModel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.arSceneNavigator.viroAppProps.displayObjectName]);
 
   const getModel = () => {
@@ -126,7 +126,8 @@ const New = props => {
         scale={state.scale}
         rotation={state.rotation}
         dragType="FixedToWorld"
-        key={props.arSceneNavigator.viroAppProps.displayObjectName}>
+        key={props.arSceneNavigator.viroAppProps.displayObjectName}
+      >
         <ViroSpotLight
           innerAngle={5}
           outerAngle={20}
@@ -155,7 +156,7 @@ const New = props => {
           arShadowReceiver={true}
           ignoreEventHandling={true}
         />
-      </ViroNode>,
+      </ViroNode>
     );
 
     dispach(changeHeader(modelArray));

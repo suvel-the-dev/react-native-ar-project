@@ -6,41 +6,41 @@ import {
   ViroQuad,
   ViroSpotLight,
 } from '@viro-community/react-viro';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useSelector} from 'react-redux';
-import {addListObj} from '../redux/actions/headerAction';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { addListObj } from '../redux/actions/headerAction';
 
-const PlaceMultipleObj = props => {
-  const getlistObj = useSelector(state => state.headerReducer);
+const PlaceMultipleObj = (props) => {
+  const getlistObj = useSelector((state) => state.headerReducer);
   const dispach = useDispatch();
 
-  const [state, setState] = useState({
+  const state = {
     objPosition: [0, 0, -1],
     scale: [0.2, 0.2, 0.2],
     rotation: [0, 0, 0],
     shouldBillboard: true,
-  });
+  };
 
   const arNodeRef = useRef(0);
   const spotLight = useRef(0);
   const arscene = useRef(0);
 
   const onArHitTestResults = (position, forward, results) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       // default position is just 3 forward of the user
       let newPosition = [forward[0] * 1.5, forward[1] * 1.5, forward[2] * 1.5];
 
       // try to find a more informed position via the hit test results
       if (results.length > 0) {
-        let hitResultPosition = undefined;
+        let hitResultPosition;
         // Go through all the hit test results, and find the first AR Point that's close to the position returned by the AR Hit Test
         // We'll place our object at that first point
         for (var i = 0; i < results.length; i++) {
           let result = results[i];
           if (
-            result.type == 'ExistingPlaneUsingExtent' ||
-            (result.type == 'FeaturePoint' && !hitResultPosition)
+            result.type === 'ExistingPlaneUsingExtent' ||
+            (result.type === 'FeaturePoint' && !hitResultPosition)
           ) {
             // Calculate distance of the "position" from this hit test result
             // math = Sqr root {(x1-x2)^2 + (y1-y2)^2 + (z1-z2)^2} ->regular "distance" calculation
@@ -50,7 +50,7 @@ const PlaceMultipleObj = props => {
                 (result.transform.position[1] - position[1]) *
                   (result.transform.position[1] - position[1]) +
                 (result.transform.position[2] - position[2]) *
-                  (result.transform.position[2] - position[2]),
+                  (result.transform.position[2] - position[2])
             );
             if (distance > 0.2 && distance < 10) {
               hitResultPosition = result.transform.position;
@@ -71,6 +71,7 @@ const PlaceMultipleObj = props => {
 
   useEffect(() => {
     getModel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.arSceneNavigator.viroAppProps]);
 
   const getModel = async () => {
@@ -94,13 +95,13 @@ const PlaceMultipleObj = props => {
     let orientation = await arscene.current.getCameraOrientationAsync();
 
     let results = await arscene.current.performARHitTestWithRay(
-      orientation.forward,
+      orientation.forward
     );
 
     let pos = await onArHitTestResults(
       orientation.position,
       orientation.forward,
-      results,
+      results
     );
 
     modelArray.push(
@@ -116,7 +117,8 @@ const PlaceMultipleObj = props => {
         key={
           props.arSceneNavigator.viroAppProps.displayObjectName +
           modelArray.length
-        }>
+        }
+      >
         <ViroSpotLight
           innerAngle={5}
           outerAngle={20}
@@ -145,7 +147,7 @@ const PlaceMultipleObj = props => {
           arShadowReceiver={true}
           ignoreEventHandling={true}
         />
-      </ViroNode>,
+      </ViroNode>
     );
     dispach(addListObj(modelArray));
   };

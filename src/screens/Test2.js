@@ -1,15 +1,11 @@
-import {ViroARScene, ViroText} from '@viro-community/react-viro';
-import React, {useEffect, useRef} from 'react';
+import { ViroARScene, ViroText } from '@viro-community/react-viro';
+import React, { useRef } from 'react';
 
-const Test2 = props => {
+const Test2 = (props) => {
   const [pos, setPos] = useState([0, 0, -1]);
   const myref = useRef(0);
   let obj = props.arSceneNavigator.viroAppProps;
-  // useEffect(() => {
-  //   obj = props.arSceneNavigator.viroAppProps;
-  // }, [props.arSceneNavigator.viroAppProps]);
 
-  // console.log(myref?.current);
   if (obj?.length > 0) {
     setPos([0, -1, -2]);
   }

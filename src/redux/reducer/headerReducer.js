@@ -1,6 +1,6 @@
-import {LIST_OBJ} from '../constants';
+import { LIST_OBJ } from '../constants';
 
-const initialState = {listObj: []};
+const initialState = { listObj: [] };
 
 const headerReducer = (state = initialState, action) => {
   switch (action.type) {

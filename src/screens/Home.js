@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Viro3DObject,
   ViroAmbientLight,
@@ -10,12 +10,12 @@ const Home = () => {
   const [scale, setScale] = useState([0.05, 0.05, 0.05]);
   const [rotation, setRotation] = useState([-45, 50, 40]);
 
-  const changePosition = newposition => {
+  const changePosition = (newposition) => {
     setPosition(newposition);
   };
 
-  const setRotationChange = (rotateState, rotationFactor, source) => {
-    if (rotateState == 3) {
+  const setRotationChange = (rotateState, rotationFactor) => {
+    if (rotateState === 3) {
       setRotation([
         rotation[0] - rotationFactor,
         rotation[1] - rotationFactor,
@@ -24,9 +24,9 @@ const Home = () => {
     }
   };
 
-  const onScaleChange = (pinchState, scaleFactor, source) => {
+  const onScaleChange = (pinchState, scaleFactor) => {
     console.log(scaleFactor);
-    if (pinchState == 3) {
+    if (pinchState === 3) {
       setScale([
         scale[0] * scaleFactor,
         scale[1] * scaleFactor,

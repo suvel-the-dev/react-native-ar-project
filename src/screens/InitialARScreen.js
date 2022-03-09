@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {ViroARSceneNavigator} from '@viro-community/react-viro';
-import {View} from 'react-native';
+import React, { useState } from 'react';
+import { ViroARSceneNavigator } from '@viro-community/react-viro';
+import { View } from 'react-native';
 import Button from '../common/Button.js';
-import {styles} from '../common/style.js';
+import { styles } from '../common/style.js';
 
 const objArray = [
   require('../assets/res/coffee_mug/object_coffee_mug.vrx'),
@@ -10,7 +10,7 @@ const objArray = [
   require('../assets/res/emoji_smile/emoji_smile.vrx'),
 ];
 
-const InitialARScreen = ({route, navigation}) => {
+const InitialARScreen = ({ route, navigation }) => {
   const [state, setState] = useState({
     displayObject: false,
     objectSource: objArray[0],
@@ -28,15 +28,15 @@ const InitialARScreen = ({route, navigation}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <View style={{flex: 10}}>
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 10 }}>
         <ViroARSceneNavigator
           autofocus={true}
           initialScene={{
             scene: route?.params?.screen,
           }}
           viroAppProps={state}
-          style={{flex: 1}}
+          style={{ flex: 1 }}
         />
       </View>
       {route?.params?.screenName === 'PlaceMultipleObj' && (
@@ -46,28 +46,33 @@ const InitialARScreen = ({route, navigation}) => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Button
             style={styles.smallButton}
-            onPress={() => onShowObject(0, 'coffee_mug', 0)}>
+            onPress={() => onShowObject(0, 'coffee_mug', 0)}
+          >
             coffee mug
           </Button>
           <Button
             style={styles.smallButton}
-            onPress={() => onShowObject(1, 'flowers', 0.29076)}>
+            onPress={() => onShowObject(1, 'flowers', 0.29076)}
+          >
             flowers
           </Button>
           <Button
             style={styles.smallButton}
-            onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}>
+            onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}
+          >
             smile emoji
           </Button>
         </View>
       )}
-      <View style={{position: 'absolute'}}>
+      <View style={{ position: 'absolute' }}>
         <Button
           style={styles.smallButton}
-          onPress={() => navigation.navigate('SplashScreen')}>
+          onPress={() => navigation.navigate('SplashScreen')}
+        >
           Back
         </Button>
       </View>

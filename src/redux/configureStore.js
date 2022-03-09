@@ -1,8 +1,8 @@
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 import headerReducer from './reducer/headerReducer';
 
-const rootReducer = combineReducers({headerReducer});
+const rootReducer = combineReducers({ headerReducer });
 
 const configureStore = () => {
   return createStore(rootReducer);

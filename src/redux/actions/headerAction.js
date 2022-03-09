@@ -1,4 +1,4 @@
-import {LIST_OBJ} from '../constants';
+import { LIST_OBJ } from '../constants';
 
 export function addListObj(listObj) {
   return {
