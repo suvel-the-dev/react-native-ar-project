@@ -4,16 +4,10 @@ import { View } from 'react-native';
 import Button from '../common/Button.js';
 import { styles } from '../common/style.js';
 
-const objArray = [
-  require('../assets/res/coffee_mug/object_coffee_mug.vrx'),
-  require('../assets/res/object_flowers/object_flowers.vrx'),
-  require('../assets/res/emoji_smile/emoji_smile.vrx'),
-];
-
 const InitialARScreen = ({ route, navigation }) => {
   const [state, setState] = useState({
     displayObject: false,
-    objectSource: objArray[0],
+    objectSource: [0],
     yOffset: 0,
   });
 
@@ -23,7 +17,7 @@ const InitialARScreen = ({ route, navigation }) => {
       displayObject: true,
       yOffset: yOffset,
       displayObjectName: objUniqueName,
-      objectSource: objArray[objIndex],
+      objectSource: objIndex,
     });
   };
 

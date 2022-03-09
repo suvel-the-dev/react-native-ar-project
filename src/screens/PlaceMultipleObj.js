@@ -22,6 +22,12 @@ const PlaceMultipleObj = (props) => {
     shouldBillboard: true,
   };
 
+  const objArray = [
+    require('../assets/res/coffee_mug/object_coffee_mug.vrx'),
+    require('../assets/res/object_flowers/object_flowers.vrx'),
+    require('../assets/res/emoji_smile/emoji_smile.vrx'),
+  ];
+
   const arNodeRef = useRef(0);
   const spotLight = useRef(0);
   const arscene = useRef(0);
@@ -104,6 +110,13 @@ const PlaceMultipleObj = (props) => {
       results
     );
 
+    let key =
+      props.arSceneNavigator.viroAppProps.displayObjectName + modelArray.length;
+
+    const onClickObj = (obj) => {
+      console.log(modelArray.filter((item) => item.key === obj));
+    };
+
     modelArray.push(
       <ViroNode
         {...transformBehaviors}
@@ -114,10 +127,7 @@ const PlaceMultipleObj = (props) => {
         scale={state.scale}
         rotation={state.rotation}
         dragType="FixedToWorld"
-        key={
-          props.arSceneNavigator.viroAppProps.displayObjectName +
-          modelArray.length
-        }
+        key={key}
       >
         <ViroSpotLight
           innerAngle={5}
@@ -134,9 +144,9 @@ const PlaceMultipleObj = (props) => {
 
         <Viro3DObject
           position={[0, props.arSceneNavigator.viroAppProps.yOffset, 0]}
-          source={props.arSceneNavigator.viroAppProps.objectSource}
+          source={objArray[props.arSceneNavigator.viroAppProps.objectSource]}
           type="VRX"
-          onClick={(position, source) => console.log(position, source)}
+          onClickState={() => onClickObj(key)}
         />
 
         <ViroQuad
