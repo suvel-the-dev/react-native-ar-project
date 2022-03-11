@@ -3,6 +3,7 @@ import {
   Viro3DObject,
   ViroAmbientLight,
   ViroARScene,
+  ViroMaterials,
 } from '@viro-community/react-viro';
 
 const Home = () => {
@@ -25,7 +26,6 @@ const Home = () => {
   };
 
   const onScaleChange = (pinchState, scaleFactor) => {
-    console.log(scaleFactor);
     if (pinchState === 3) {
       setScale([
         scale[0] * scaleFactor,
@@ -35,11 +35,18 @@ const Home = () => {
     }
   };
 
+  ViroMaterials.createMaterials({
+    objectMaterial: {
+      diffuseTexture: require('../assets/abc.jpg'),
+    },
+  });
+
   return (
     <ViroARScene>
       <ViroAmbientLight color="#FFFFFF" />
       <Viro3DObject
-        source={require('../assets/12140_Skull_v3_L2.obj')}
+        source={require('../assets/modern-chair/modern-chair.obj')}
+        resources={[require('../assets/modern-chair/modern-chair.mtl')]}
         position={position}
         scale={scale}
         rotation={rotation}
@@ -47,6 +54,7 @@ const Home = () => {
         onDrag={changePosition}
         onRotate={setRotationChange}
         onPinch={onScaleChange}
+        materials={['objectMaterial']}
       />
     </ViroARScene>
   );

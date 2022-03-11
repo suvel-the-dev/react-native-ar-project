@@ -4,6 +4,7 @@ import Button from '../common/Button.js';
 import { styles } from '../common/style.js';
 import Home from './Home.js';
 import ImageDetection from './ImageDetection.js';
+import MultipleObj from './MultipleObj/index.js';
 import PlaceMultipleObj from './PlaceMultipleObj.js';
 
 const SplashScreen = ({ navigation }) => {
@@ -40,6 +41,12 @@ const SplashScreen = ({ navigation }) => {
         onPress={() => changeScreen(ImageDetection, 'ImageDetection')}
       >
         Image Detection Screen
+      </Button>
+      <Button
+        style={styles.largeButton}
+        onPress={() => changeScreen(MultipleObj, 'mul')}
+      >
+        Multi Test
       </Button>
     </View>
   );

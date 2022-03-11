@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { changeHeader } from '../redux/actions/headerAction';
 
 const New = (props) => {
-  const a = useSelector((state) => state.headerReducer);
+  const a = useSelector((state) => state.listObject);
   const dispach = useDispatch();
   console.log(a);
   const [state, setState] = useState({

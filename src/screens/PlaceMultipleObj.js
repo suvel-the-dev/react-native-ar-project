@@ -9,11 +9,10 @@ import {
 import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { mathSqrt } from '../helpers/mathSqrt';
-import { addListObj } from '../redux/actions/headerAction';
+import { addListObj } from '../redux/actions/listObject';
 
 const PlaceMultipleObj = (props) => {
-  const getlistObj = useSelector((state) => state.headerReducer);
+  const getlistObj = useSelector((state) => state.listObject);
   const dispach = useDispatch();
 
   const state = {
@@ -49,8 +48,16 @@ const PlaceMultipleObj = (props) => {
             result.type === 'ExistingPlaneUsingExtent' ||
             (result.type === 'FeaturePoint' && !hitResultPosition)
           ) {
-            let distance = mathSqrt(result.transform.position, position);
-
+            // Calculate distance of the "position" from this hit test result
+            // math = Sqr root {(x1-x2)^2 + (y1-y2)^2 + (z1-z2)^2} ->regular "distance" calculation
+            var distance = Math.sqrt(
+              (result.transform.position[0] - position[0]) *
+                (result.transform.position[0] - position[0]) +
+                (result.transform.position[1] - position[1]) *
+                  (result.transform.position[1] - position[1]) +
+                (result.transform.position[2] - position[2]) *
+                  (result.transform.position[2] - position[2])
+            );
             if (distance > 0.2 && distance < 10) {
               hitResultPosition = result.transform.position;
               break;
@@ -106,13 +113,8 @@ const PlaceMultipleObj = (props) => {
     let key =
       props.arSceneNavigator.viroAppProps.displayObjectName + modelArray.length;
 
-    const onClickObj = async (obj) => {
-      let currentObjectPos = modelArray.filter((item) => item.key === obj)[0]
-        .props.position;
-      let currentCameraPos = await arscene.current.getCameraOrientationAsync();
-
-      let distance = mathSqrt(currentObjectPos, currentCameraPos.position);
-      console.log(distance);
+    const onClickObj = (obj) => {
+      console.log(modelArray.filter((item) => item.key === obj));
     };
 
     modelArray.push(
