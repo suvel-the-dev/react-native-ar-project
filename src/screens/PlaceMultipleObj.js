@@ -112,7 +112,8 @@ const PlaceMultipleObj = (props) => {
       let currentCameraPos = await arscene.current.getCameraOrientationAsync();
 
       let distance = mathSqrt(currentObjectPos, currentCameraPos.position);
-      console.log(distance);
+      // console.log(distance);
+      console.log(distance.toFixed(4) * 100, 'cm');
     };
 
     modelArray.push(
@@ -125,6 +126,7 @@ const PlaceMultipleObj = (props) => {
         scale={state.scale}
         rotation={state.rotation}
         dragType="FixedToWorld"
+        // dragType="FixedToPlane"
         key={key}
       >
         <ViroSpotLight
