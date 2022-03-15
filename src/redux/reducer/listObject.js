@@ -1,13 +1,24 @@
-import { LIST_OBJ } from '../constants';
+import { LIST_OBJ, MODEL_ITEMS } from '../constants';
 
-const initialState = {};
+const initialState = { listObjects: {}, modelItems: [] };
 
 const listObject = (state = initialState, action) => {
   switch (action.type) {
     case LIST_OBJ:
+      let a = {
+        ...state,
+        listObjects: {
+          ...state.listObjects,
+          [action.payload.uid]: action.payload,
+        },
+      };
+      debugger;
+      return a;
+
+    case MODEL_ITEMS:
       return {
         ...state,
-        [action.payload.uid]: action.payload,
+        modelItems: action.payload,
       };
 
     default:

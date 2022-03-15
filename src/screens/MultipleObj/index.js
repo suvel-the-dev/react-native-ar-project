@@ -5,17 +5,20 @@ import {
   ViroSpotLight,
 } from '@viro-community/react-viro';
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addModelItems } from '../../redux/actions/listObject';
 import ModelItemRender from './ModelItemRender';
 
-const MultipleObj = () => {
-  const getlistObj = useSelector((state) => state.listObject);
+const MultipleObj = ({ arSceneNavigator }) => {
+  // const listObjects = useSelector((state) => state.listObject.listObjects);
+  const modelItems = useSelector((state) => state.listObject.modelItems);
+  const dispach = useDispatch();
+
   const arscene = useRef(0);
-  const renderedObjects = useRef([]);
 
   useEffect(() => {
     getModel();
-  }, [getlistObj]);
+  }, [arSceneNavigator.viroAppProps]);
 
   const onObjectLoadEnd = () => {
     return new Promise((resolve) => {
@@ -30,39 +33,24 @@ const MultipleObj = () => {
   };
 
   const getModel = async () => {
-    Object.keys(getlistObj).map((id) => {
-      renderedObjects.current.push(
-        <ModelItemRender
-          key={getlistObj[id].uid}
-          modelItem={getlistObj[id]}
-          onObjectLoadEnd={onObjectLoadEnd}
-        />
-      );
-    });
-    return renderedObjects.current;
+    let modelArray = modelItems;
+
+    modelArray.push(
+      <ModelItemRender
+        key={arSceneNavigator.viroAppProps.uid}
+        modelItem={arSceneNavigator.viroAppProps}
+        onObjectLoadEnd={onObjectLoadEnd}
+      />
+    );
+
+    dispach(addModelItems(modelArray));
   };
   // const a = getModel();
-  console.log(renderedObjects.current);
 
   return (
-    <ViroARScene
-      ref={arscene}
-      physicsWorld={{ gravity: [0, -9.81, 0] }}
-      // postProcessEffects={[this.props.postProcessEffects]}
-      onTrackingUpdated={() => console.log('done')}
-    >
-      <ViroAmbientLight color="#ffffff" intensity={20} />
-      <ViroDirectionalLight color="#ffffff" direction={[0, -1, -0.2]} />
-      <ViroSpotLight
-        innerAngle={5}
-        outerAngle={90}
-        direction={[0, 1, 0]}
-        position={[0, -7, 0]}
-        color="#ffffff"
-        intensity={250}
-      />
-      {renderedObjects.current}
-      {/* {getModel()} */}
+    <ViroARScene ref={arscene} onTrackingUpdated={() => console.log('done')}>
+      <ViroAmbientLight color="#ffffff" intensity={200} />
+      {modelItems}
     </ViroARScene>
   );
 };

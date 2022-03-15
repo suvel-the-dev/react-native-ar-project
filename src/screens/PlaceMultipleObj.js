@@ -159,7 +159,7 @@ const PlaceMultipleObj = (props) => {
         />
       </ViroNode>
     );
-    dispach(addListObj(modelArray));
+    // dispach(addListObj(modelArray));
   };
 
   return (

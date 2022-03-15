@@ -13,25 +13,22 @@ const objArray = [
 
 const InitialARScreen = ({ route, navigation }) => {
   const dispach = useDispatch();
-
-  const [state] = useState({
-    displayObject: false,
-    objectSource: [0],
-    yOffset: 0,
-  });
+  const [viroProps, setViroProps] = useState({});
 
   const onShowObject = (objIndex, objUniqueName, yOffset) => {
-    dispach(
-      addListObj({
-        displayObject: true,
-        yOffset: yOffset,
-        displayObjectName: objUniqueName,
-        obj: objArray[objIndex],
-        type: 'VRX',
-        uid: objUniqueName + objIndex,
-        position: [0, 0, -1],
-      })
-    );
+    const obj = {
+      displayObject: true,
+      yOffset: yOffset,
+      displayObjectName: objUniqueName,
+      obj: objArray[objIndex],
+      type: 'VRX',
+      uid: objUniqueName + objIndex,
+      position: [0, 0, -1],
+    };
+    if (obj) {
+      setViroProps(obj);
+      dispach(addListObj(obj));
+    }
   };
 
   return (
@@ -42,7 +39,7 @@ const InitialARScreen = ({ route, navigation }) => {
           initialScene={{
             scene: route?.params?.screen,
           }}
-          viroAppProps={state}
+          viroAppProps={viroProps}
           style={{ flex: 1 }}
         />
       </View>
