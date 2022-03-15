@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Viro3DObject,
   ViroAmbientLight,
@@ -8,8 +9,7 @@ import {
 } from '@viro-community/react-viro';
 import React, { useEffect, useRef } from 'react';
 import { Text } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mathSqrt } from '../helpers/mathSqrt';
 import { onArHitTestResults } from '../helpers/onArHitTestResults';
 import { addListObj } from '../redux/actions/headerAction';
@@ -39,6 +39,15 @@ const PlaceMultipleObj = (props) => {
     getModel();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.arSceneNavigator.viroAppProps]);
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('@modelArray', jsonValue);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const getModel = async () => {
     let modelArray = getlistObj.listObj;
@@ -126,7 +135,10 @@ const PlaceMultipleObj = (props) => {
         />
       </ViroNode>
     );
+    await AsyncStorage.removeItem('@modelArray');
+    await storeData(modelArray);
     dispach(addListObj(modelArray));
+    // dispach(addListObj(modelArray));
   };
 
   return (
