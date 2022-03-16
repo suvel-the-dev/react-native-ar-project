@@ -113,8 +113,14 @@ const PlaceMultipleObj = (props) => {
     let key =
       props.arSceneNavigator.viroAppProps.displayObjectName + modelArray.length;
 
-    const onClickObj = (obj) => {
-      console.log(modelArray.filter((item) => item.key === obj));
+    const onClickObj = async (obj) => {
+      let currentObjectPos = modelArray.filter((item) => item.key === obj)[0]
+        .props.position;
+      let currentCameraPos = await arscene.current.getCameraOrientationAsync();
+
+      let distance = mathSqrt(currentObjectPos, currentCameraPos.position);
+      // console.log(distance);
+      console.log(distance.toFixed(4) * 100, 'cm');
     };
 
     modelArray.push(
@@ -127,6 +133,7 @@ const PlaceMultipleObj = (props) => {
         scale={state.scale}
         rotation={state.rotation}
         dragType="FixedToWorld"
+        // dragType="FixedToPlane"
         key={key}
       >
         <ViroSpotLight

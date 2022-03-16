@@ -5,15 +5,13 @@ const initialState = { listObjects: {}, modelItems: [] };
 const listObject = (state = initialState, action) => {
   switch (action.type) {
     case LIST_OBJ:
-      let a = {
+      return {
         ...state,
         listObjects: {
           ...state.listObjects,
           [action.payload.uid]: action.payload,
         },
       };
-      debugger;
-      return a;
 
     case MODEL_ITEMS:
       return {

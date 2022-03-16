@@ -22,8 +22,7 @@ const InitialARScreen = ({ route, navigation }) => {
       displayObjectName: objUniqueName,
       obj: objArray[objIndex],
       type: 'VRX',
-      uid: objUniqueName + objIndex,
-      position: [0, 0, -1],
+      uid: objUniqueName + Math.random().toString(16).slice(2),
     };
     if (obj) {
       setViroProps(obj);
