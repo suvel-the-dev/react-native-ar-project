@@ -42,36 +42,36 @@ const InitialARScreen = ({ route, navigation }) => {
           style={{ flex: 1 }}
         />
       </View>
-      {route?.params?.screenName === 'PlaceMultipleObj' ||
-        (route?.params?.screenName === 'mul' && (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+      {(route?.params?.screenName === 'PlaceMultipleObj' ||
+        route?.params?.screenName === 'mul') && (
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Button
+            style={styles.smallButton}
+            onPress={() => onShowObject(0, 'coffee_mug', 0)}
           >
-            <Button
-              style={styles.smallButton}
-              onPress={() => onShowObject(0, 'coffee_mug', 0)}
-            >
-              coffee mug
-            </Button>
-            <Button
-              style={styles.smallButton}
-              onPress={() => onShowObject(1, 'flowers', 0.29076)}
-            >
-              flowers
-            </Button>
-            <Button
-              style={styles.smallButton}
-              onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}
-            >
-              smile emoji
-            </Button>
-          </View>
-        ))}
+            coffee mug
+          </Button>
+          <Button
+            style={styles.smallButton}
+            onPress={() => onShowObject(1, 'flowers', 0.29076)}
+          >
+            flowers
+          </Button>
+          <Button
+            style={styles.smallButton}
+            onPress={() => onShowObject(2, 'smile_emoji', 0.497823)}
+          >
+            smile emoji
+          </Button>
+        </View>
+      )}
       <View style={{ position: 'absolute' }}>
         <Button
           style={styles.smallButton}

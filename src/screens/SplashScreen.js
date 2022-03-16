@@ -5,7 +5,7 @@ import { styles } from '../common/style.js';
 import Home from './Home.js';
 import ImageDetection from './ImageDetection.js';
 import MultipleObj from './MultipleObj/index.js';
-import PlaceMultipleObj from './PlaceMultipleObj.js';
+import PlaceMultipleObj from './PlaceMultipleObj/index.js';
 
 const SplashScreen = ({ navigation }) => {
   const changeScreen = (object, name) => {

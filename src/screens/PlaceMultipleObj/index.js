@@ -1,17 +1,11 @@
-import {
-  ViroAmbientLight,
-  ViroARScene,
-  ViroDirectionalLight,
-  ViroSpotLight,
-  ViroText,
-} from '@viro-community/react-viro';
+import { ViroAmbientLight, ViroARScene } from '@viro-community/react-viro';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onArHitTestResults } from '../../helpers/helper';
 import { addListObj } from '../../redux/actions/listObject';
-import ModelItemRender from './ModelItemRender';
+import ModelItem from './ModelItem';
 
-const MultipleObj = ({ arSceneNavigator }) => {
+const PlaceMultipleObj = ({ arSceneNavigator }) => {
   const listObjects = useSelector((state) => state.listObject.listObjects);
   // const modelItems = useSelector((state) => state.listObject.modelItems);
   const dispach = useDispatch();
@@ -46,7 +40,7 @@ const MultipleObj = ({ arSceneNavigator }) => {
         }
 
         return (
-          <ModelItemRender
+          <ModelItem
             pos={pos}
             key={listObjects[id].uid}
             modelItem={listObjects[id]}
@@ -66,4 +60,4 @@ const MultipleObj = ({ arSceneNavigator }) => {
   );
 };
 
-export default MultipleObj;
+export default PlaceMultipleObj;
