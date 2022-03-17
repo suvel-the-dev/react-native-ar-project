@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ViroARSceneNavigator } from '@viro-community/react-viro';
 import { View } from 'react-native';
 import Button from '../common/Button.js';
 import { styles } from '../common/style.js';
 import { useDispatch } from 'react-redux';
 import { addListObj } from '../redux/actions/listObject.js';
+import {
+  getAsyncStorageData,
+  removeAsyncStorageData,
+} from '../helpers/helper.js';
+
 const objArray = [
   require('../assets/res/coffee_mug/object_coffee_mug.vrx'),
   require('../assets/res/object_flowers/object_flowers.vrx'),
@@ -12,17 +17,29 @@ const objArray = [
 ];
 
 const InitialARScreen = ({ route, navigation }) => {
+  // const listObjects = useSelector((state) => state.listObject.listObjects);
+
   const dispach = useDispatch();
   const [viroProps, setViroProps] = useState({});
 
-  const onShowObject = (objIndex, objUniqueName, yOffset) => {
+  // useEffect(() => {
+  //   if (route?.params?.screenName === 'mul') {
+  //     getAsyncStorageData().then((obj) => {
+  //       dispach(addListObj(obj));
+  //     });
+  //   } else {
+  //     removeAsyncStorageData();
+  //   }
+  // }, [dispach, route?.params?.screenName]);
+
+  const onShowObject = async (objIndex, objUniqueName, yOffset) => {
     const obj = {
       displayObject: true,
       yOffset: yOffset,
       displayObjectName: objUniqueName,
       obj: objArray[objIndex],
       type: 'VRX',
-      uid: objUniqueName + Math.random().toString(16).slice(2),
+      uid: objUniqueName + Date.now(),
     };
     if (obj) {
       setViroProps(obj);
